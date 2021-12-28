@@ -11,9 +11,13 @@ from backend.views import PingPongViewSet
 
 router.register(r'ping', PingPongViewSet, basename='ping')
 
+from news.urls.rest import router as news_router
+router.registry.extend(news_router.registry)
+
 urlpatterns = [
-    path(r'api', avi_view),
-    path('api/v1/', include(router.urls)),
+    # path(r'api', avi_view),
+    # path('api/v1/', include(router.urls)),
+    path('', include(news_router.urls)),
     # todo либо авторизация либо заранее получаем токен и настраиваем чтобы избежать подбора
     path('api-token-auth/', CustomAuthToken.as_view())
 ]
