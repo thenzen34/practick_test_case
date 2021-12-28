@@ -7,6 +7,9 @@ from django.urls import path, include
 avi_view = RedirectView.as_view(url='api/v1/', permanent=True)
 
 router = DefaultRouter()
+from backend.views import PingPongViewSet
+
+router.register(r'ping', PingPongViewSet, basename='ping')
 
 urlpatterns = [
     path(r'api', avi_view),
