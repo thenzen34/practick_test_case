@@ -1,2 +1,2 @@
 #!/bin/bash
-curl http://127.0.0.1:8777/news
+curl https://dry-lake-88654.herokuapp.com/news

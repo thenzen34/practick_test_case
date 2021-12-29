@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-ekoxs!v!=t--tdm=31uf91i5brt-g*2c@=dwm81ug3zz-s#ecb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*', ]
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -137,3 +138,6 @@ load_dotenv(env_file)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='foo')
+DEBUG = os.environ.get('DEBUG', default=False) == '1'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
