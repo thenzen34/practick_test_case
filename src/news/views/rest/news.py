@@ -6,4 +6,4 @@ from news.serializers.news import NewsSerializer
 
 class NewsViewSet(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
-    queryset = News.objects.all()
+    queryset = News.getAllActive()

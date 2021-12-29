@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -23,3 +25,8 @@ class News(models.Model):
             models.Index(fields=['date']),
         ]
         ordering = ('date',)
+
+    @staticmethod
+    def getAllActive():
+        today = datetime.now()
+        return News.objects.filter(date__isnull=False).filter(date__lte=today).order_by('-date').all()
